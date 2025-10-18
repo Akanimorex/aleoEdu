@@ -62,7 +62,7 @@ export function HeroSection() {
           >
             <p>Every action you take online leaves a trace.</p>
             <p>
-              Aleo redefines what it means to compute privately — by combining zero-knowledge proofs with programmable
+              Aleo redefines what it means to compute privately, by combining zero-knowledge proofs with programmable
               logic.
             </p>
             <p className="text-black font-semibold">

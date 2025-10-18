@@ -28,11 +28,11 @@ export function EcosystemSection() {
           </h2>
 
           <div className="space-y-6 text-lg md:text-xl text-gray-700  leading-relaxed mb-16">
-            <p>From DeFi protocols to identity tools, from gaming to governance —</p>
+            <p>From DeFi protocols to identity tools, from gaming to governance,</p>
             <p className="text-black font-semibold">
               Aleo powers the next generation of privacy-preserving apps.
             </p>
-            <p>Explore what's being built on the world's first private compute platform.</p>
+            <p>Explore what&apos;s being built on the world&apos;s first private compute platform.</p>
           </div>
 
           <div className="grid md:grid-cols-2 gap-6">

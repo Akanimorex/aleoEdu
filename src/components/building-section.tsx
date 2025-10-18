@@ -18,9 +18,9 @@ export function BuildingSection() {
           </h2>
 
           <div className="space-y-6 text-lg md:text-xl text-gray-700 leading-relaxed mb-12">
-            <p>Leo is Aleo's domain-specific programming language for writing private applications.</p>
+            <p>Leo is Aleo&apos;s domain-specific programming language for writing private applications.</p>
             <p className="text-black font-semibold">It looks like Rust. It feels like magic.</p>
-            <p>With Leo, developers can build apps that prove correctness — without revealing data.</p>
+            <p>With Leo, developers can build apps that prove correctness without revealing data.</p>
           </div>
 
           <motion.div

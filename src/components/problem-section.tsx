@@ -27,7 +27,7 @@ export function ProblemSection() {
               Transparency was a feature. <span className="text-black font-semibold">Until it became a bug.</span>
             </p>
             <p>Users deserve privacy. Developers deserve freedom.</p>
-            <p className="text-black font-bold">That's the problem Aleo was built to solve.</p>
+            <p className="text-black font-bold">That&apos;s the problem Aleo was built to solve.</p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-6">

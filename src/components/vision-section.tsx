@@ -54,7 +54,7 @@ export function VisionSection() {
               transition={{ delay: 0.3 }}
               className="text-gray-700"
             >
-              Privacy is not secrecy — it's sovereignty.
+              Privacy is not secrecy — it&apos;s sovereignty.
             </motion.p>
 
             <motion.p
@@ -75,7 +75,7 @@ export function VisionSection() {
               transition={{ delay: 0.7 }}
               className="text-black font-bold text-2xl"
             >
-              This isn't a feature. It's a fundamental right.
+              This isn&apos;t a feature. It&apos;s a fundamental right.
             </motion.p>
           </div>
 

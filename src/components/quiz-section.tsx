@@ -181,11 +181,11 @@ export function QuizSection() {
 
               <div className="space-y-3 md:space-y-4">
                 <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold text-black">
-                  {score >= 3 ? "You're an Aleo Expert!" : "Keep Learning About Aleo"}
+                  {score >= 3 ? "You&apos;re an Aleo Expert!" : "Keep Learning About Aleo"}
                 </h2>
                 <p className="text-base md:text-xl text-black/70 max-w-2xl mx-auto">
                   {score >= 3
-                    ? "You have a great understanding of Aleo's technology and vision for private computation."
+                    ? "You have a great understanding of Aleo&apos;s technology and vision for private computation."
                     : "Explore more about Aleo to deepen your understanding of zero-knowledge proofs and private applications."}
                 </p>
               </div>

@@ -23,7 +23,7 @@ export function SolutionSection() {
           <div className="space-y-6 text-lg md:text-xl text-gray-700 leading-relaxed mb-16">
             <p>Aleo runs private applications directly in your browser — powered by zero-knowledge proofs (ZKPs).</p>
             <p className="text-black font-semibold">Computation happens off-chain, verification happens on-chain.</p>
-            <p>It's a system that's efficient, scalable, and truly private by design.</p>
+            <p>It&apos;s a system that&apos;s efficient, scalable, and truly private by design.</p>
           </div>
 
           <div className="relative">
