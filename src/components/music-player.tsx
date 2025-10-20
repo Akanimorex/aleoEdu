@@ -17,7 +17,6 @@ export function MusicPlayer() {
     if (audioRef.current) {
       audioRef.current.volume = isMuted ? 0 : volume
       audioRef.current.play().catch(() => {
-        // Browser may block autoplay, that's okay
         setIsPlaying(false)
       })
     }
