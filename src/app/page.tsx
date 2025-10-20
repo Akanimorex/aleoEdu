@@ -2,6 +2,7 @@
 
 import { useEffect, useState, useRef } from "react"
 import { motion } from "framer-motion"
+import { ThemeToggle } from "@/components/theme-toggle"
 import { HeroSection } from "@/components/hero-section"
 import { ProblemSection } from "@/components/problem-section"
 import { SolutionSection } from "@/components/solution-section"
@@ -63,6 +64,7 @@ export default function Home() {
       <AleoLogo />
 
       <SectionIndicator current={currentSection + 1} total={8} />
+      <ThemeToggle />
 
       <MusicPlayer />
 

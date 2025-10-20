@@ -13,7 +13,7 @@ export function JoinSection() {
   ]
 
   return (
-    <section className="relative min-w-full h-screen flex items-center justify-center px-6 snap-section bg-white">
+    <section className="relative min-w-full h-screen flex items-center justify-center px-6 snap-section bg-white dark:bg-black">
       <div className="max-w-4xl mx-auto text-center">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
@@ -21,17 +21,17 @@ export function JoinSection() {
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
         >
-          <h2 className="text-4xl md:text-6xl font-bold mb-12 text-balance text-black">
+          <h2 className="text-4xl md:text-6xl font-bold mb-12 text-balance text-black dark:text-white">
             Build. Learn.{" "}
-            <span className="text-black underline decoration-[var(--aleo-yellow)] decoration-4">Contribute.</span>
+            <span className="text-black dark:text-white underline decoration-[var(--aleo-yellow)] dark:decoration-[var(--aleo-yellow-dark)] decoration-4">Contribute.</span>
           </h2>
 
-          <div className="space-y-6 text-lg md:text-xl text-gray-700 leading-relaxed mb-16">
+          <div className="space-y-6 text-lg md:text-xl text-gray-700 dark:text-gray-300 leading-relaxed mb-16">
             <p>Aleo is open, permissionless, and community-driven.</p>
-            <p className="text-black font-semibold">
+            <p className="text-black dark:text-white font-semibold">
               Whether you&apos;re a developer, creator, or advocate — there&apos;s a place for you here.
             </p>
-            <p className="text-black font-bold">Ready to start?</p>
+            <p className="text-black dark:text-white font-bold">Ready to start?</p>
           </div>
 
           <motion.div
@@ -52,15 +52,17 @@ export function JoinSection() {
                 <Button
                   asChild
                   size="lg"
-                  className="bg-black text-white hover:text-black transition-all duration-300 border-2 border-black font-semibold"
+                  className="bg-black dark:bg-white text-white dark:text-black hover:text-black dark:hover:text-white transition-all duration-300 border-2 border-black dark:border-white font-semibold"
                   style={{
                     ["--hover-bg" as string]: link.color,
                   }}
-                  onMouseEnter={(e: { currentTarget: { style: { backgroundColor: string } } }) => {
+                  onMouseEnter={(e: { currentTarget: { style: { backgroundColor: string; color: string } } }) => {
                     e.currentTarget.style.backgroundColor = link.color
+                    e.currentTarget.style.color = "black"
                   }}
-                  onMouseLeave={(e: { currentTarget: { style: { backgroundColor: string } } }) => {
-                    e.currentTarget.style.backgroundColor = "black"
+                  onMouseLeave={(e: { currentTarget: { style: { backgroundColor: string; color: string } } }) => {
+                    e.currentTarget.style.backgroundColor = ""
+                    e.currentTarget.style.color = ""
                   }}
                 >
                   <a href={link.url} target="_blank" rel="noopener noreferrer" className="gap-2">
@@ -77,12 +79,12 @@ export function JoinSection() {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ delay: 0.8 }}
-            className="pt-12 border-t-2 border-gray-200"
+            className="pt-12 border-t-2 border-gray-200 dark:border-gray-800"
           >
-            <p className="text-sm text-gray-600">
-              Made by <span className="text-black font-bold">Rex</span> | Aleo Ambassador
+            <p className="text-sm text-gray-600 dark:text-gray-400">
+              Made by <span className="text-black dark:text-white font-bold">Rex</span> | Aleo Ambassador
             </p>
-            <p className="text-xs text-gray-500 mt-2">Powered by Aleo</p>
+            <p className="text-xs text-gray-500 dark:text-gray-500 mt-2">Powered by Aleo</p>
           </motion.div>
         </motion.div>
       </div>

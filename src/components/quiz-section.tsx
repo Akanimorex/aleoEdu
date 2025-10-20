@@ -77,10 +77,10 @@ export function QuizSection() {
   }
 
   return (
-    <section className="snap-section min-w-full h-full flex items-center justify-center p-4 md:p-8 lg:p-16 relative overflow-hidden">
+    <section className="snap-section min-w-full h-full flex items-center justify-center p-4 md:p-8 lg:p-16 relative overflow-hidden bg-white dark:bg-black">
       {/* Animated background shapes */}
       <motion.div
-        className="absolute top-20 left-10 w-32 h-32 md:w-48 md:h-48 rounded-full opacity-20"
+        className="absolute top-20 left-10 w-32 h-32 md:w-48 md:h-48 rounded-full opacity-20 dark:opacity-10"
         style={{ backgroundColor: "var(--aleo-yellow)" }}
         animate={{
           scale: [1, 1.2, 1],
@@ -89,7 +89,7 @@ export function QuizSection() {
         transition={{ duration: 8, repeat: Number.POSITIVE_INFINITY }}
       />
       <motion.div
-        className="absolute bottom-20 right-10 w-40 h-40 md:w-56 md:h-56 rounded-full opacity-20"
+        className="absolute bottom-20 right-10 w-40 h-40 md:w-56 md:h-56 rounded-full opacity-20 dark:opacity-10"
         style={{ backgroundColor: "var(--aleo-mint)" }}
         animate={{
           scale: [1, 1.3, 1],
@@ -110,13 +110,13 @@ export function QuizSection() {
             >
               <div className="text-center space-y-3 md:space-y-4">
                 <motion.div
-                  className="inline-block px-4 py-2 rounded-full text-sm md:text-base font-mono"
+                  className="inline-block px-4 py-2 rounded-full text-sm md:text-base font-mono text-white"
                   style={{ backgroundColor: "var(--aleo-pink)" }}
                 >
                   Question {currentQuestion + 1} of {quizQuestions.length}
                 </motion.div>
-                <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold text-black">Test Your Knowledge</h2>
-                <p className="text-lg md:text-2xl text-black/70 max-w-2xl mx-auto">
+                <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold text-black dark:text-white">Test Your Knowledge</h2>
+                <p className="text-lg md:text-2xl text-black/70 dark:text-gray-300 max-w-2xl mx-auto">
                   {quizQuestions[currentQuestion].question}
                 </p>
               </div>
@@ -135,11 +135,11 @@ export function QuizSection() {
                       className={`p-4 md:p-6 rounded-2xl text-left text-base md:text-lg font-medium transition-all duration-300 border-2 ${
                         showFeedback
                           ? isCorrect
-                            ? "bg-[var(--aleo-mint)] border-[var(--aleo-mint)] text-black"
+                            ? "bg-[var(--aleo-mint)] dark:bg-[var(--aleo-mint)] border-[var(--aleo-mint)] dark:border-[var(--aleo-mint)] text-black"
                             : isSelected
-                              ? "bg-[var(--aleo-coral)] border-[var(--aleo-coral)] text-black"
-                              : "bg-white border-black/10 text-black/50"
-                          : "bg-white border-black/20 text-black hover:border-black hover:bg-black hover:text-white"
+                              ? "bg-[var(--aleo-coral)] dark:bg-[var(--aleo-coral)] border-[var(--aleo-coral)] dark:border-[var(--aleo-coral)] text-black"
+                              : "bg-white dark:bg-gray-900 border-black/10 dark:border-white/10 text-black/50 dark:text-gray-400"
+                          : "bg-white dark:bg-gray-900 border-black/20 dark:border-white/20 text-black dark:text-white hover:border-black dark:hover:border-white hover:bg-black dark:hover:bg-white hover:text-white dark:hover:text-black"
                       }`}
                       whileHover={!showFeedback ? { scale: 1.02 } : {}}
                       whileTap={!showFeedback ? { scale: 0.98 } : {}}
@@ -180,12 +180,12 @@ export function QuizSection() {
               </motion.div>
 
               <div className="space-y-3 md:space-y-4">
-                <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold text-black">
-                  {score >= 3 ? "You&apos;re an Aleo Expert!" : "Keep Learning About Aleo"}
+                <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold text-black dark:text-white">
+                  {score >= 3 ? "You're an Aleo Expert!" : "Keep Learning About Aleo"}
                 </h2>
-                <p className="text-base md:text-xl text-black/70 max-w-2xl mx-auto">
+                <p className="text-base md:text-xl text-black/70 dark:text-gray-300 max-w-2xl mx-auto">
                   {score >= 3
-                    ? "You have a great understanding of Aleo&apos;s technology and vision for private computation."
+                    ? "You have a great understanding of Aleo's technology and vision for private computation."
                     : "Explore more about Aleo to deepen your understanding of zero-knowledge proofs and private applications."}
                 </p>
               </div>
@@ -193,7 +193,7 @@ export function QuizSection() {
               <div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center">
                 <motion.button
                   onClick={resetQuiz}
-                  className="px-6 md:px-8 py-3 md:py-4 rounded-full bg-black text-white text-base md:text-lg font-semibold hover:bg-[var(--aleo-yellow)] hover:text-black transition-all duration-300"
+                  className="px-6 md:px-8 py-3 md:py-4 rounded-full bg-black dark:bg-white text-white dark:text-black text-base md:text-lg font-semibold hover:bg-[var(--aleo-yellow)] dark:hover:bg-[var(--aleo-yellow)] hover:text-black transition-all duration-300"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
@@ -203,7 +203,7 @@ export function QuizSection() {
                   href="https://aleo.org"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-6 md:px-8 py-3 md:py-4 rounded-full bg-white border-2 border-black text-black text-base md:text-lg font-semibold hover:bg-black hover:text-white transition-all duration-300"
+                  className="px-6 md:px-8 py-3 md:py-4 rounded-full bg-white dark:bg-gray-900 border-2 border-black dark:border-white text-black dark:text-white text-base md:text-lg font-semibold hover:bg-black dark:hover:bg-white hover:text-white dark:hover:text-black transition-all duration-300"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >

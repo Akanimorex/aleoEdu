@@ -15,7 +15,7 @@ export function AleoLogo() {
         viewBox="0 0 200 200"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
-        className="text-black md:w-[500px] md:h-[500px]"
+        className="text-black dark:text-white/10 md:w-[500px] md:h-[500px]"
       >
         <motion.path
           d="M100 20L180 180H20L100 20Z"

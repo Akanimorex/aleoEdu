@@ -4,10 +4,10 @@ import type React from "react"
 
 import { useState, useRef, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import { Volume2, VolumeX, Play, Pause} from "lucide-react"
+import { Volume2, VolumeX } from "lucide-react"
 
 export function MusicPlayer() {
-  const [isPlaying, setIsPlaying] = useState(false)
+  const [isPlaying, setIsPlaying] = useState(true)
   const [volume, setVolume] = useState(0.3)
   const [isMuted, setIsMuted] = useState(false)
   const [showVolumeSlider, setShowVolumeSlider] = useState(false)
@@ -16,8 +16,12 @@ export function MusicPlayer() {
   useEffect(() => {
     if (audioRef.current) {
       audioRef.current.volume = isMuted ? 0 : volume
+      audioRef.current.play().catch(() => {
+        // Browser may block autoplay, that's okay
+        setIsPlaying(false)
+      })
     }
-  }, [volume, isMuted])
+  }, [isMuted, volume])
 
   const togglePlay = () => {
     if (audioRef.current) {
@@ -26,27 +30,9 @@ export function MusicPlayer() {
       } else {
         audioRef.current.play()
       }
+      setIsPlaying(!isPlaying)
     }
   }
-
-  useEffect(() => {
-    const audio = audioRef.current
-    if (!audio) return
-
-    const handlePlay = () => setIsPlaying(true)
-    const handlePause = () => setIsPlaying(false)
-    const handleEnded = () => setIsPlaying(false)
-
-    audio.addEventListener('play', handlePlay)
-    audio.addEventListener('pause', handlePause)
-    audio.addEventListener('ended', handleEnded)
-
-    return () => {
-      audio.removeEventListener('play', handlePlay)
-      audio.removeEventListener('pause', handlePause)
-      audio.removeEventListener('ended', handleEnded)
-    }
-  }, [])
 
   const toggleMute = () => {
     setIsMuted(!isMuted)
@@ -58,6 +44,22 @@ export function MusicPlayer() {
     if (newVolume > 0) {
       setIsMuted(false)
     }
+  }
+
+  const barVariants = {
+    playing: (i: number) => ({
+      height: ["8px", "20px", "12px", "24px", "16px"][i % 5],
+      transition: {
+        duration: 0.5,
+        repeat: Number.POSITIVE_INFINITY,
+        repeatType: "mirror" as const,
+        delay: i * 0.1,
+      },
+    }),
+    paused: {
+      height: "8px",
+      transition: { duration: 0.3 },
+    },
   }
 
   return (
@@ -74,9 +76,9 @@ export function MusicPlayer() {
         <AnimatePresence>
           {showVolumeSlider && (
             <motion.div
-              initial={{ opacity: 0, x: 20 }}
+              initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: 20 }}
+              exit={{ opacity: 0, x: -20 }}
               className="hidden md:flex items-center gap-2 bg-white dark:bg-gray-800 border-2 border-black dark:border-white rounded-full px-4 py-2 shadow-lg"
             >
               <input
@@ -95,7 +97,6 @@ export function MusicPlayer() {
         <motion.button
           onClick={toggleMute}
           className="hidden md:block p-2.5 md:p-3 bg-white dark:bg-gray-800 border-2 border-black dark:border-white rounded-full hover:bg-[var(--aleo-mint)] transition-all duration-300 shadow-lg"
-          whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
           aria-label={isMuted ? "Unmute" : "Mute"}
         >
@@ -108,54 +109,22 @@ export function MusicPlayer() {
 
         <motion.button
           onClick={togglePlay}
-          className="relative p-4 md:p-5 bg-white dark:bg-gray-800 border-2 border-black dark:border-white rounded-full hover:bg-[var(--aleo-yellow)] transition-all duration-300 shadow-lg"
-          whileHover={{ scale: 1.05 }}
+          className="w-16 h-16 md:w-20 md:h-20 bg-white dark:bg-gray-800 border-2 border-black dark:border-white rounded-full hover:bg-[var(--aleo-yellow)] transition-all duration-300 shadow-lg flex items-center justify-center"
           whileTap={{ scale: 0.95 }}
+           whileHover={{ scale: 1.05 }}
           aria-label={isPlaying ? "Pause music" : "Play music"}
         >
-          { isPlaying ? <Pause className="w-5 h-5 md:w-6 md:h-6 text-black dark:text-white" /> : <Play className="w-5 h-5 md:w-6 md:h-6 text-black dark:text-white" />}
-
-          <AnimatePresence>
-            {isPlaying ? (
-              <>
-                <motion.div
-                  className="absolute inset-0 rounded-full border-2 border-[var(--aleo-coral)]"
-                  initial={{ scale: 1, opacity: 0.6 }}
-                  animate={{ scale: 1.8, opacity: 0 }}
-                  exit={{ opacity: 0 }}
-                  transition={{
-                    duration: 1.5,
-                    repeat: Number.POSITIVE_INFINITY,
-                    ease: "easeOut",
-                  }}
-                />
-                <motion.div
-                  className="absolute inset-0 rounded-full border-2 border-[var(--aleo-pink)]"
-                  initial={{ scale: 1, opacity: 0.6 }}
-                  animate={{ scale: 1.8, opacity: 0 }}
-                  exit={{ opacity: 0 }}
-                  transition={{
-                    duration: 1.5,
-                    repeat: Number.POSITIVE_INFINITY,
-                    ease: "easeOut",
-                    delay: 0.5,
-                  }}
-                />
-                <motion.div
-                  className="absolute inset-0 rounded-full border-2 border-[var(--aleo-mint)]"
-                  initial={{ scale: 1, opacity: 0.6 }}
-                  animate={{ scale: 1.8, opacity: 0 }}
-                  exit={{ opacity: 0 }}
-                  transition={{
-                    duration: 1.5,
-                    repeat: Number.POSITIVE_INFINITY,
-                    ease: "easeOut",
-                    delay: 1,
-                  }}
-                />
-              </>
-            ):''}
-          </AnimatePresence>
+          <div className="flex items-center justify-center gap-1.5 h-8">
+            {[0, 1, 2, 3, 4].map((i) => (
+              <motion.div
+                key={i}
+                custom={i}
+                variants={barVariants}
+                animate={isPlaying ? "playing" : "paused"}
+                className="w-1 bg-black dark:bg-white rounded-full"
+              />
+            ))}
+          </div>
         </motion.button>
       </motion.div>
     </>
