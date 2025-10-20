@@ -54,8 +54,6 @@ export function SolutionSection() {
                   darkHoverBg: "#4A2E1E",
                 },
               ].map((item, i) => {
-                const isDark = document.documentElement.classList.contains('dark');
-                const hoverBg = isDark ? item.darkHoverBg || item.hoverBg : item.hoverBg;
                 
                 return (
                   <motion.div

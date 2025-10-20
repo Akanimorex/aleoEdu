@@ -73,17 +73,6 @@ export function HeroSection() {
             </p>
             <p className="text-black dark:text-white font-bold">Welcome to the age of private computation.</p>
           </motion.div>
-
-          <motion.div
-            className="absolute bottom-8 md:bottom-12 left-1/2 -translate-x-1/2 flex items-center gap-2 md:gap-3 text-xs md:text-sm font-mono text-gray-600 dark:text-gray-400"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1, x: [0, 10, 0] }}
-            transition={{ delay: 1.5, x: { repeat: Number.POSITIVE_INFINITY, duration: 2 } }}
-          >
-            <span className="hidden md:inline">Scroll to explore</span>
-            <span className="md:hidden">Swipe to explore</span>
-            <ChevronRight className="w-4 h-4 md:w-5 md:h-5" />
-          </motion.div>
         </motion.div>
       </div>
     </section>
