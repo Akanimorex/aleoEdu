@@ -111,7 +111,7 @@ export function QuizSection() {
               <div className="text-center space-y-3 md:space-y-4">
                 <motion.div
                   className="inline-block px-4 py-2 rounded-full text-sm md:text-base font-mono text-white"
-                  style={{ backgroundColor: "var(--aleo-pink)" }}
+                  style={{ backgroundColor: "var(--aleo-coral)" }}
                 >
                   Question {currentQuestion + 1} of {quizQuestions.length}
                 </motion.div>

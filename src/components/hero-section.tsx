@@ -3,6 +3,8 @@
 import { motion } from "framer-motion"
 import { ChevronRight } from "lucide-react"
 import { FloatingIcons } from "./floating-icons"
+import Image from "next/image"
+import aleoLogo from "../../public/logo.png"
 
 export function HeroSection() {
   return (
@@ -38,6 +40,21 @@ export function HeroSection() {
       </div>
 
       <div className="relative z-10 max-w-5xl mx-auto px-4 md:px-6 text-center">
+       <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1 }}>
+          <motion.div
+            className="flex justify-center mb-4 md:mb-6"
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.1 }}
+          >
+            <Image
+              src={aleoLogo}
+              alt="Aleo Logo"
+              width={30}
+              height={30}
+            />
+          </motion.div>
+        </motion.div>
         <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1 }}>
           <motion.p
             className="text-black dark:text-white text-xs md:text-sm font-mono mb-4 md:mb-6 tracking-wider font-semibold"
@@ -65,7 +82,7 @@ export function HeroSection() {
           >
             <p>Every action you take online leaves a trace.</p>
             <p>
-              Aleo redefines what it means to compute privately — by combining zero-knowledge proofs with programmable
+              Aleo redefines what it means to compute privately, by combining zero-knowledge proofs with programmable
               logic.
             </p>
             <p className="text-black dark:text-white font-semibold">

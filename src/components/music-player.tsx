@@ -64,7 +64,7 @@ export function MusicPlayer() {
 
   return (
     <>
-      <audio ref={audioRef} loop src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" />
+      <audio ref={audioRef} loop src="https://res.cloudinary.com/rexhotels/video/upload/v1760786313/good-night-lofi-cozy-chill-music-160166_p9ar2x.mp3" />
 
       <motion.div
         initial={{ opacity: 0, y: 20 }}

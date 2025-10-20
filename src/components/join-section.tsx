@@ -29,7 +29,7 @@ export function JoinSection() {
           <div className="space-y-6 text-lg md:text-xl text-gray-700 dark:text-gray-300 leading-relaxed mb-16">
             <p>Aleo is open, permissionless, and community-driven.</p>
             <p className="text-black dark:text-white font-semibold">
-              Whether you&apos;re a developer, creator, or advocate — there&apos;s a place for you here.
+              Whether you&apos;re a developer, creator, or advocate , there&apos;s a place for you here.
             </p>
             <p className="text-black dark:text-white font-bold">Ready to start?</p>
           </div>
