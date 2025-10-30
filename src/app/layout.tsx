@@ -11,6 +11,9 @@ export const metadata: Metadata = {
   description:
     "Discover Aleo - the blockchain that makes smart contracts private through zero-knowledge proofs and programmable logic.",
   generator: "v0.app",
+  icons: {
+    icon: "/logo.png",
+  },
 }
 
 export default function RootLayout({
